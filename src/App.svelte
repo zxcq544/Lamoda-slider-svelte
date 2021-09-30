@@ -46,30 +46,14 @@
 		class="products-list-item__link link"
 	>
 		<div class="product-list-item__gallery">
-			<div
-				class="product-list-item__gallery-page"
-				data-id="0"
-				on:mouseenter={change_image_src}
-				on:mouseleave={set_image_default}
-			/>
-			<div
-				class="product-list-item__gallery-page"
-				data-id="1"
-				on:mouseenter={change_image_src}
-				on:mouseleave={set_image_default}
-			/>
-			<div
-				class="product-list-item__gallery-page"
-				data-id="2"
-				on:mouseenter={change_image_src}
-				on:mouseleave={set_image_default}
-			/>
-			<div
-				class="product-list-item__gallery-page"
-				data-id="3"
-				on:mouseenter={change_image_src}
-				on:mouseleave={set_image_default}
-			/>
+			{#each image_urls as val, i}
+				<div
+					class="product-list-item__gallery-page"
+					data-id={i}
+					on:mouseenter={change_image_src}
+					on:mouseleave={set_image_default}
+				/>
+			{/each}
 		</div>
 		<div
 			class="to-favorites js-to-favorites                      to-favorites_wish-groups"
