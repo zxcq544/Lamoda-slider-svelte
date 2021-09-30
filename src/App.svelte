@@ -1,11 +1,11 @@
 <script>
 	let name = "world";
-	let visible = false;
-	function handleMouseOver() {
-		visible = true;
+	let is_item__extra_visible = false;
+	function list_item_MouseEnter() {
+		is_item__extra_visible = true;
 	}
-	function handleMouseOut(e) {
-		visible = false;
+	function list_item_MouseOut(e) {
+		is_item__extra_visible = false;
 	}
 </script>
 
@@ -21,8 +21,8 @@
 	data-rollover="./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg"
 	data-gallery="[./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg , ./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg , ./img236x341/M/P/MP002XM1RK04_15191680_3_v1_2x.jpg , ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg]"
 	data-price="1599"
-	on:mouseenter={handleMouseOver}
-	on:mouseleave={handleMouseOut}
+	on:mouseenter={list_item_MouseEnter}
+	on:mouseleave={list_item_MouseOut}
 >
 	<a
 		href="/p/mp002xm1rk04/clothes-zolla-pulover/"
@@ -85,7 +85,7 @@
 	</a>
 	<div class="groups-by-sku groups-by-sku_hidden" />
 	<div class="products-list-item_blur" />
-	{#if visible == true}
+	{#if is_item__extra_visible == true}
 		<div class="products-list-item__extra">
 			<div class="products-list-item__extra-info">
 				<div class="products-list-item__sizes">
