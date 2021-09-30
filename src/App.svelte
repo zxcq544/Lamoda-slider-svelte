@@ -1,11 +1,26 @@
 <script>
-	let name = "world";
+	let image_src = "./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg";
+	let image_urls = [
+		"./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg",
+		"./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg",
+		"./img236x341/M/P/MP002XM1RK04_15191680_3_v1_2x.jpg",
+		" ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg",
+	];
 	let is_item__extra_visible = false;
 	function list_item_MouseEnter() {
 		is_item__extra_visible = true;
 	}
 	function list_item_MouseOut(e) {
 		is_item__extra_visible = false;
+	}
+	function set_image_default() {
+		image_src = "./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg";
+	}
+
+	function change_image_src(e) {
+		// console.log(e.target.dataset.id);
+		// let id = e.target.dataset.id;
+		image_src = image_urls[e.target.dataset.id];
 	}
 </script>
 
@@ -19,7 +34,7 @@
 	data-type="category"
 	data-block=""
 	data-rollover="./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg"
-	data-gallery="[./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg , ./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg , ./img236x341/M/P/MP002XM1RK04_15191680_3_v1_2x.jpg , ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg]"
+	data-gallery=""
 	data-price="1599"
 	on:mouseenter={list_item_MouseEnter}
 	on:mouseleave={list_item_MouseOut}
@@ -31,10 +46,30 @@
 		class="products-list-item__link link"
 	>
 		<div class="product-list-item__gallery">
-			<div class="product-list-item__gallery-page" data-id="0" />
-			<div class="product-list-item__gallery-page" data-id="1" />
-			<div class="product-list-item__gallery-page" data-id="2" />
-			<div class="product-list-item__gallery-page" data-id="3" />
+			<div
+				class="product-list-item__gallery-page"
+				data-id="0"
+				on:mouseenter={change_image_src}
+				on:mouseleave={set_image_default}
+			/>
+			<div
+				class="product-list-item__gallery-page"
+				data-id="1"
+				on:mouseenter={change_image_src}
+				on:mouseleave={set_image_default}
+			/>
+			<div
+				class="product-list-item__gallery-page"
+				data-id="2"
+				on:mouseenter={change_image_src}
+				on:mouseleave={set_image_default}
+			/>
+			<div
+				class="product-list-item__gallery-page"
+				data-id="3"
+				on:mouseenter={change_image_src}
+				on:mouseleave={set_image_default}
+			/>
 		</div>
 		<div
 			class="to-favorites js-to-favorites                      to-favorites_wish-groups"
@@ -60,10 +95,10 @@
 			/>
 
 			<img
+				src={image_src}
 				class="products-list-item__img"
 				width="236"
 				height="341"
-				src="./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg"
 				alt="Пуловер, Zolla, цвет: коричневый. Артикул: MP002XM1RK04. Одежда / Джемперы, свитеры и кардиганы"
 			/>
 
