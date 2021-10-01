@@ -1,11 +1,21 @@
 <script>
-	let image_src = "./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg";
-	let image_urls = [
-		"./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg",
-		"./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg",
-		"./img236x341/M/P/MP002XM1RK04_15191680_3_v1_2x.jpg",
-		" ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg",
-	];
+	let json_data = {
+		name: "Пуловер",
+		sku: "MP002XM1RK04",
+		price: 1599,
+		brand: "Zolla",
+		image_src: "./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg",
+		image_urls: [
+			"./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg",
+			"./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg",
+			"./img236x341/M/P/MP002XM1RK04_15191680_3_v1_2x.jpg",
+			" ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg",
+		],
+		sizes: ["46/48", "48/50", "50/52", "52/54", "54/56"],
+	};
+	let price = json_data["price"];
+	let image_src = json_data["image_src"];
+	let image_urls = json_data["image_urls"];
 	let is_item__extra_visible = false;
 	function list_item_MouseEnter() {
 		is_item__extra_visible = true;
@@ -35,7 +45,7 @@
 	data-block=""
 	data-rollover="./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg"
 	data-gallery=""
-	data-price="1599"
+	data-price={price}
 	on:mouseenter={list_item_MouseEnter}
 	on:mouseleave={list_item_MouseOut}
 >
@@ -59,7 +69,7 @@
 			class="to-favorites js-to-favorites                      to-favorites_wish-groups"
 			data-sku="MP002XM1RK04"
 			data-image="./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg"
-			data-price-origin="1599"
+			data-price-origin={price}
 			data-gender="men"
 			data-name="Пуловер"
 			data-color-family="коричневый"
@@ -90,16 +100,13 @@
 				<!---->
 			</span>
 		</div>
-		<span class="price"
-			><span class="price__actual">1 599</span><span
-				class="price__currency"
-			>
-				₽</span
-			></span
-		>
+		<span class="price">
+			<span class="price__actual">{price.toLocaleString()}</span>
+			<span class="price__currency">&nbsp;₽</span>
+		</span>
 		<div class="products-list-item__brand">
-			Zolla
-			<span class="products-list-item__type"> Пуловер </span>
+			{json_data["brand"]}
+			<span class="products-list-item__type"> {json_data["name"]} </span>
 		</div>
 	</a>
 	<div class="groups-by-sku groups-by-sku_hidden" />
@@ -110,27 +117,15 @@
 				<div class="products-list-item__sizes">
 					<span class="products-list-item__sizes-title">
 						Размеры (RUS):
-					</span><a
-						class="products-list-item__size-item link"
-						href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
-						>46/48</a
-					><a
-						class="products-list-item__size-item link"
-						href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
-						>48/50</a
-					><a
-						class="products-list-item__size-item link"
-						href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
-						>50/52</a
-					><a
-						class="products-list-item__size-item link"
-						href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
-						>52/54</a
-					><a
-						class="products-list-item__size-item link"
-						href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
-						>54/56</a
-					>
+					</span>
+					{#each json_data["sizes"] as size}
+						<a
+							class="products-list-item__size-item link"
+							href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
+						>
+							{size}
+						</a>
+					{/each}
 				</div>
 				<div
 					class="zoomin products-list-item__qv"
