@@ -1,5 +1,6 @@
 <script>
 	let json_data = {
+		link: "/p/mp002xm1rk04/clothes-zolla-pulover/",
 		name: "Пуловер",
 		sku: "MP002XM1RK04",
 		price: 1599,
@@ -12,15 +13,23 @@
 			" ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg",
 		],
 		sizes: ["46/48", "48/50", "50/52", "52/54", "54/56"],
+		gender: "men",
+		color_family: "коричневый",
+		is_sport: false,
+		is_premium: false,
+		season: "5592:мульти",
+		is_new: "false",
+		category: "Джемперы, свитеры и кардиганы",
+		position: 2,
 	};
 	let price = json_data["price"];
 	let image_src = json_data["image_src"];
 	let image_urls = json_data["image_urls"];
 	let is_item__extra_visible = false;
-	function list_item_MouseEnter() {
+	function set_list_item__extra_visible_on_MouseEnter() {
 		is_item__extra_visible = true;
 	}
-	function list_item_MouseOut(e) {
+	function set_list_item__extra_invisible_on_MouseOut(e) {
 		is_item__extra_visible = false;
 	}
 	function set_image_default() {
@@ -28,33 +37,18 @@
 	}
 
 	function change_image_src(e) {
-		// console.log(e.target.dataset.id);
-		// let id = e.target.dataset.id;
 		image_src = image_urls[e.target.dataset.id];
 	}
 </script>
 
-<!-- <h1>Hello {name}!</h1> -->
 <div
 	class="products-list-item"
-	data-sku="MP002XM1RK04"
-	data-quick-promotion-provider-id=""
-	data-position="2"
-	data-src="./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg"
 	data-type="category"
-	data-block=""
 	data-rollover="./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg"
-	data-gallery=""
-	data-price={price}
-	on:mouseenter={list_item_MouseEnter}
-	on:mouseleave={list_item_MouseOut}
+	on:mouseenter={set_list_item__extra_visible_on_MouseEnter}
+	on:mouseleave={set_list_item__extra_invisible_on_MouseOut}
 >
-	<a
-		href="/p/mp002xm1rk04/clothes-zolla-pulover/"
-		data-sku="MP002XM1RK04"
-		data-position="2"
-		class="products-list-item__link link"
-	>
+	<a href={json_data["link"]} data-position="2" class="products-list-item__link link">
 		<div class="product-list-item__gallery">
 			{#each image_urls as val, i}
 				<div
@@ -93,7 +87,9 @@
 				class="products-list-item__img"
 				width="236"
 				height="341"
-				alt="Пуловер, Zolla, цвет: коричневый. Артикул: MP002XM1RK04. Одежда / Джемперы, свитеры и кардиганы"
+				alt="{json_data['name']}, {json_data['brand']}, цвет: {json_data['color_family']}. Артикул: {json_data[
+					'sku'
+				]}. Одежда / {json_data['category']}"
 			/>
 
 			<span class="vue-widget product-list-item__badges">
@@ -115,14 +111,9 @@
 		<div class="products-list-item__extra">
 			<div class="products-list-item__extra-info">
 				<div class="products-list-item__sizes">
-					<span class="products-list-item__sizes-title">
-						Размеры (RUS):
-					</span>
+					<span class="products-list-item__sizes-title"> Размеры (RUS): </span>
 					{#each json_data["sizes"] as size}
-						<a
-							class="products-list-item__size-item link"
-							href="/p/mp002xm1rk04/clothes-zolla-pulover/?sku=MP002XM1RK04"
-						>
+						<a class="products-list-item__size-item link" href="{json_data['link']}?sku={json_data['sku']}">
 							{size}
 						</a>
 					{/each}
