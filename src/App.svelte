@@ -50,5 +50,7 @@
 	];
 </script>
 
-<Product json_data={external_json_data[0]} />
-<Product json_data={external_json_data[1]} />
+<div class="products-catalog__list">
+	<Product json_data={external_json_data[0]} />
+	<Product json_data={external_json_data[1]} />
+</div>
