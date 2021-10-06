@@ -1,6 +1,7 @@
 <script>
 	import Product from "./Product.svelte";
 	import { big_json } from "./stores.js";
+	//TODO ADD Money type and size type depending on country
 </script>
 
 <div class="products-catalog__list">
