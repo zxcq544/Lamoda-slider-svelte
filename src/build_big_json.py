@@ -9,8 +9,9 @@ from decimal import *
 
 html_string = ""
 
-with open('product_list_catalog.html', 'r') as file:
+with open('product_list_catalog.html', 'r', encoding="utf-8") as file:
     html_string = file.read().replace('\n', '')
+# print(html_string)
 
 doc = lxml.html.fromstring(html_string)
 
@@ -40,10 +41,16 @@ for el in elems:
         if "data-sku" in link_el[0].attrib:
             product["data-href"] = link_el[0].attrib["href"]
 
+        sizes_elements = el.find_class("products-list-item__size-item")
+        product["data-sizes"] = []
+        for size_el in sizes_elements:
+            product["data-sizes"].append(size_el.text_content())
+
         child_div = el.find_class("to-favorites")
         if "data-sku" in child_div[0].attrib:
             product["data-name"] = child_div[0].attrib["data-name"]
-            product["data-price-origin"] = child_div[0].attrib["data-price-origin"]
+            product["data-price-origin"] = int(
+                child_div[0].attrib["data-price-origin"])
             product["data-gender"] = child_div[0].attrib["data-gender"]
             product["data-color-family"] = child_div[0].attrib["data-color-family"]
             product["data-brand"] = child_div[0].attrib["data-brand"]
@@ -53,9 +60,11 @@ for el in elems:
             product["data-is-new"] = child_div[0].attrib["data-is-new"]
             product["data-category"] = child_div[0].attrib["data-category"]
             if "data-discount" in child_div[0].attrib:
-                product["data-price"] = child_div[0].attrib["data-price"]
-                product["data-discount"] = child_div[0].attrib["data-discount"]
-                product["data-discount-percent"] = child_div[0].attrib["data-discount-percent"]
+                product["data-price"] = int(child_div[0].attrib["data-price"])
+                product["data-discount"] = int(
+                    child_div[0].attrib["data-discount"])
+                product["data-discount-percent"] = int(
+                    child_div[0].attrib["data-discount-percent"])
             # else:
             #     print("No discount")
         else:
@@ -70,7 +79,7 @@ for el in elems:
 pprint(all_products)
 
 
-product_file = open("products.json", "w")
-# magic happens here to make it pretty-printed
+product_file = open("products.json", "w", encoding="utf-8")
+# # magic happens here to make it pretty-printed
 product_file.write(json.dumps(all_products, indent=4, sort_keys=True))
 product_file.close()

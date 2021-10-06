@@ -1,32 +1,34 @@
 <script>
     export let json_data;
     //json_data format
-    // json_data = {
-    // 	link: "/p/mp002xm1rk04/clothes-zolla-pulover/",
-    // 	name: "Пуловер",
-    // 	sku: "MP002XM1RK04",
-    // 	price: 1599,
-    // 	brand: "Zolla",
-    // 	image_src: "./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg",
-    // 	image_urls: [
-    // 		"./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg",
-    // 		"./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg",
-    // 		"./img236x341/M/P/MP002XM1RK04_15191680_3_v1_2x.jpg",
-    // 		" ./img236x341/M/P/MP002XM1RK04_15191681_4_v1_2x.jpg",
-    // 	],
-    // 	sizes: ["46/48", "48/50", "50/52", "52/54", "54/56"],
-    // 	gender: "men",
-    // 	color_family: "коричневый",
-    // 	is_sport: false,
-    // 	is_premium: false,
-    // 	season: "5592:мульти",
-    // 	is_new: "false",
-    // 	category: "Джемперы, свитеры и кардиганы",
-    // 	position: 2,
+    // "data-brand": "Ferz",
+    // let json_data = {
+    //     "data-category": "\u0420\u0401\u0420\u00b0\u0420\u0457\u0420\u0454\u0420\u0451",
+    //     "data-color-family": "\u0421\u2021\u0420\u00b5\u0421\u0402\u0420\u0405\u0421\u2039\u0420\u2116",
+    //     "data-discount": "189",
+    //     "data-discount-percent": "15",
+    //     "data-gallery": [
+    //         "./img236x341/F/E/FE913CMCLMM1_7110810_1_v1.jpg",
+    //         "./img236x341/F/E/FE913CMCLMM1_7110811_2_v1.jpg",
+    //         "./img236x341/F/E/FE913CMCLMM1_7110812_3_v1.jpg",
+    //         "./img236x341/F/E/FE913CMCLMM1_7110813_4_v1.jpg",
+    //         "./img236x341/F/E/FE913CMCLMM1_7113609_9_v1.jpg",
+    //     ],
+    //     "data-gender": "men",
+    //     "data-href": "https://www.lamoda.ru/p/fe913cmclmm1/hats-ferz-shapka/",
+    //     "data-is-new": "false",
+    //     "data-is-premium": "false",
+    //     "data-is-sport": "false",
+    //     "data-name": "\u0420\u0401\u0420\u00b0\u0420\u0457\u0420\u0454\u0420\u00b0",
+    //     "data-price": "1010",
+    //     "data-price-origin": "1199",
+    //     "data-season":
+    //         "{5593:\u0420\u00b7\u0420\u0451\u0420\u0458\u0420\u00b0,5595:\u0420\u0491\u0420\u00b5\u0420\u0458\u0420\u0451\u0421\u0403\u0420\u00b5\u0420\u00b7\u0420\u0455\u0420\u0405}",
+    //     "data-sku": "FE913CMCLMM1",
+    //     "data-src": "./img236x341/F/E/FE913CMCLMM1_7110810_1_v1.jpg",
     // };
-    let price = json_data["price"];
-    let image_src = json_data["image_src"];
-    let image_urls = json_data["image_urls"];
+    let image_src = json_data["data-src"];
+    let image_urls = json_data["data-gallery"];
     let is_item__extra_visible = false;
     function set_list_item__extra_visible_on_MouseEnter() {
         is_item__extra_visible = true;
@@ -35,7 +37,7 @@
         is_item__extra_visible = false;
     }
     function set_image_default() {
-        image_src = "./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg";
+        image_src = json_data["data-src"];
     }
 
     function change_image_src(e) {
@@ -50,7 +52,7 @@
     on:mouseenter={set_list_item__extra_visible_on_MouseEnter}
     on:mouseleave={set_list_item__extra_invisible_on_MouseOut}
 >
-    <a href={json_data["link"]} data-position="2" class="products-list-item__link link">
+    <a href={json_data["data-href"]} data-position="2" class="products-list-item__link link">
         <div class="product-list-item__gallery">
             {#each image_urls as val, i}
                 <div
@@ -65,7 +67,7 @@
             class="to-favorites js-to-favorites                      to-favorites_wish-groups"
             data-sku="MP002XM1RK04"
             data-image="./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg"
-            data-price-origin={price}
+            data-price-origin={json_data["data-price-origin"]}
             data-gender="men"
             data-name="Пуловер"
             data-color-family="коричневый"
@@ -89,9 +91,9 @@
                 class="products-list-item__img"
                 width="236"
                 height="341"
-                alt="{json_data['name']}, {json_data['brand']}, цвет: {json_data['color_family']}. Артикул: {json_data[
-                    'sku'
-                ]}. Одежда / {json_data['category']}"
+                alt="{json_data['data-name']}, {json_data['data-brand']}, цвет: {json_data[
+                    'data-color-family'
+                ]}. Артикул: {json_data['data-sku']}. Одежда / {json_data['data-category']}"
             />
 
             <span class="vue-widget product-list-item__badges">
@@ -99,12 +101,21 @@
             </span>
         </div>
         <span class="price">
-            <span class="price__actual">{price.toLocaleString()}</span>
+            {#if json_data.hasOwnProperty("data-price")}
+                <span class="price__actual parts__price_cd-disabled">
+                    {json_data["data-price-origin"].toLocaleString()}
+                </span>
+                <span class="price__action js-cd-discount ">
+                    {json_data["data-price"].toLocaleString()}
+                </span>
+            {:else}
+                <span class="price__actual">{json_data["data-price-origin"].toLocaleString()}</span>
+            {/if}
             <span class="price__currency">&nbsp;₽</span>
         </span>
         <div class="products-list-item__brand">
-            {json_data["brand"]}
-            <span class="products-list-item__type"> {json_data["name"]} </span>
+            {json_data["data-brand"]}
+            <span class="products-list-item__type"> {json_data["data-name"]} </span>
         </div>
     </a>
     <div class="groups-by-sku groups-by-sku_hidden" />
@@ -112,14 +123,19 @@
     {#if is_item__extra_visible == true}
         <div class="products-list-item__extra">
             <div class="products-list-item__extra-info">
-                <div class="products-list-item__sizes">
-                    <span class="products-list-item__sizes-title"> Размеры (RUS): </span>
-                    {#each json_data["sizes"] as size}
-                        <a class="products-list-item__size-item link" href="{json_data['link']}?sku={json_data['sku']}">
-                            {size}
-                        </a>
-                    {/each}
-                </div>
+                {#if Array.isArray(json_data["data-sizes"]) && json_data["data-sizes"].length}
+                    <div class="products-list-item__sizes">
+                        <span class="products-list-item__sizes-title"> Размеры (RUS): </span>
+                        {#each json_data["data-sizes"] as size}
+                            <a
+                                class="products-list-item__size-item link"
+                                href="{json_data['data-href']}?sku={json_data['data-sku']}"
+                            >
+                                {size}
+                            </a>
+                        {/each}
+                    </div>
+                {/if}
                 <div
                     class="zoomin products-list-item__qv"
                     data-sku="MP002XM1RK04"

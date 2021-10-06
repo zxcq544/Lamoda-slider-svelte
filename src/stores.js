@@ -1,4 +1,5 @@
-[
+import { readable } from 'svelte/store';
+export const big_json = readable([
     {
         "data-brand": "Ferz",
         "data-category": "\u0428\u0430\u043f\u043a\u0438",
@@ -1398,4 +1399,4 @@
         "data-sku": "NI464CULYUN6",
         "data-src": "./img236x341/N/I/NI464CULYUN6_13301480_1_v1.jpg"
     }
-]
+])
