@@ -36,6 +36,9 @@ for el in elems:
         product["data-src"] = clean_url(el.attrib["data-src"])
         product["data-sku"] = el.attrib["data-sku"]
         # product["price"] = Decimal(el.attrib["data-price"])
+        link_el = el.find_class("products-list-item__link")
+        if "data-sku" in link_el[0].attrib:
+            product["data-href"] = link_el[0].attrib["href"]
 
         child_div = el.find_class("to-favorites")
         if "data-sku" in child_div[0].attrib:
