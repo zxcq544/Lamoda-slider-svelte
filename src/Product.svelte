@@ -35,6 +35,7 @@
     }
     function set_list_item__extra_invisible_on_MouseOut(e) {
         is_item__extra_visible = false;
+        set_image_default();
     }
     function set_image_default() {
         image_src = json_data["data-src"];
@@ -55,12 +56,7 @@
     <a href={json_data["data-href"]} data-position="2" class="products-list-item__link link">
         <div class="product-list-item__gallery">
             {#each image_urls as val, i}
-                <div
-                    class="product-list-item__gallery-page"
-                    data-id={i}
-                    on:mouseenter={change_image_src}
-                    on:mouseleave={set_image_default}
-                />
+                <div class="product-list-item__gallery-page" data-id={i} on:mouseenter={change_image_src} />
             {/each}
         </div>
         <div
