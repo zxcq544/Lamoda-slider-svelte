@@ -1,63 +1,80 @@
-html, body {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-body {
-	color: #333;
-	margin: 0;
-	padding: 8px;
-	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color: rgb(0,80,160);
-}
-
-label {
-	display: block;
-}
-
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
-}
-
-input:disabled {
-	color: #ccc;
-}
-
-button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
-}
-
-button:disabled {
-	color: #999;
-}
-
-button:not(:disabled):active {
-	background-color: #ddd;
-}
-
-button:focus {
-	border-color: #666;
+:root {
+	--labelColor: #000;
+	--labelColorHover: #444;
+	--secondaryLabelColor: #888;
+	--secondaryLabelColorTransparent: #8880;
+	--disabledColor: #e5e5e5;
+	--backgroundColor: #fff;
+	--secondaryBackgroundColor: #f5f5f5;
+	--badgeForegroundColor: #fff;
+	--primaryColor: #2796ff;
+	--primaryColorHover: #0060d2;
+	--primaryShadowColor: #90cfff;
+	--linkTextColor: #2796ff;
+	--linkTextColorHover: #0060d2;
+	--secondaryColor: #e9f4ff;
+	--secondaryColorHover: #cae5ff;
+	--attentionColor: #c20000;
+	--actionColor: #f93c00;
+	--actionColorHover: #db0d00;
+	--successColor: #00a200;
+	--additionalColor: #45ce5b;
+	--overlayDarkColor: rgba(0, 0, 0, 0.9);
+	--overlayLightColor: rgba(255, 255, 255, 0.8);
+	--facebookColor: #385185;
+	--twitterColor: #1da1f2;
+	--vkontakteColor: #4c6c91;
+	--revoColor: #ff671d;
+	--gpBlue: #4285f4;
+	--mailruBlue: #168de2;
+	--fontSizeAccident: 40px/44px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeHeadLine: 24px/32px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeSubLine: 16px/20px 'CoFo Sans Lamoda', sans-serif;
+	--fontSize: 13px/16px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeCaption: 11px/16px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeAccidentBold: bold 40px/44px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeHeadLineBold: bold 24px/32px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeSubLineBold: bold 16px/20px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeBold: bold 13px/16px 'CoFo Sans Lamoda', sans-serif;
+	--fontSizeCaptionBold: bold 11px/16px 'CoFo Sans Lamoda', sans-serif;
+	--listMargin: 0 0 4px;
+	--paragrafMargin: 0 0 8px;
+	--lineHeight: 1.25;
+	--maxLayout: 1200px;
+	--desktopLayout: 960px;
+	--minLayout: 320px;
+	--padding: 16px;
+	--bottomBarHeight: 56px;
+	--focusBox: 0 0 4px var(--primaryColor);
+	--errorBox: 0 0 4px var(--attentionColor);
+	--animationDuration: 300ms;
+	--animationHeartbeatOnce: heartbeat 0.6s 1;
+	--animationHeartbeatInfinite: heartbeat 0.6s infinite;
+	--separatorColor: #e5e5e5;
+	--secondaryBorderColor: #000;
+	--thinBorderWidth: 1px;
+	--thickBorderWidth: 4px;
+	--thinBorder: var(--thinBorderWidth) solid var(--separatorColor);
+	--thickBorder: var(--thickBorderWidth) solid var(--separatorColor);
+	--thinSecondaryBorder: var(--thinBorderWidth) solid var(--secondaryBorderColor);
+	--middleSecondaryBorder: 2px solid var(--secondaryBorderColor);
+	--thickSecondaryBorder: var(--thickBorderWidth) solid var(--secondaryBorderColor);
+	--additionalDarkBlueColor: #3c5064;
+	--additionalGoldColor: #a5825f;
+	--additionalMintColor: #a5d2a0;
+	--additionalPaleBlueColor: #cde6ff;
+	--additionalPalePinkColor: #ffd7d2;
+	--additionalBlue20FlatColor: #d9e4ee;
+	--shadowBox: 0 0 8px rgba(0, 0, 0, 0.16);
+	--shadowColor: transparent;
+	--shadowPopupBox: 0 2px 48px rgba(0, 0, 0, 0.24);
+	--productImageAspectRatio: 0.694;
+	--zIndexStickySearchBar: 12;
+	--zIndexSticky: 3;
+	--zIndexPopover: 10000;
+	--zIndexBottomBar: 15000;
+	--zIndexCookieNotify: 16000;
+	--zIndexSidebar: 20000;
+	--zIndexModal: 20000;
+	--zIndexDesktopSidebar: 20001;
 }

@@ -54,10 +54,13 @@ for el in elems:
             product["data-gender"] = child_div[0].attrib["data-gender"]
             product["data-color-family"] = child_div[0].attrib["data-color-family"]
             product["data-brand"] = child_div[0].attrib["data-brand"]
-            product["data-is-sport"] = child_div[0].attrib["data-is-sport"]
-            product["data-is-premium"] = child_div[0].attrib["data-is-premium"]
+            product["data-is-sport"] = json.loads(
+                child_div[0].attrib["data-is-sport"])
+            product["data-is-premium"] = json.loads(
+                child_div[0].attrib["data-is-premium"])
             product["data-season"] = child_div[0].attrib["data-season"]
-            product["data-is-new"] = child_div[0].attrib["data-is-new"]
+            product["data-is-new"] = json.loads(
+                child_div[0].attrib["data-is-new"])
             product["data-category"] = child_div[0].attrib["data-category"]
             if "data-discount" in child_div[0].attrib:
                 product["data-price"] = int(child_div[0].attrib["data-price"])

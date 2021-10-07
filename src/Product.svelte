@@ -77,6 +77,27 @@
 
             <span class="vue-widget product-list-item__badges">
                 <!---->
+                {#if json_data.hasOwnProperty("data-discount-percent") || json_data["data-is-premium"] == true || json_data["data-is-new"] == true}
+                    <div class="_5t7aeZYDOXng7bYEB3usV">
+                        <div class="wCxqu2RB00zVcMzGMBlxW">
+                            {#if json_data["data-is-new"] === true}
+                                <div class="_1HVtliqmrPb2bIG6xwIDiB PxfFitJeassoTJCWFBaFR brm-300gk_uJHcVn8DNeN">
+                                    <span class="_33zL0vXHSW8yWYWFJ-0umK">new</span>
+                                </div>
+                            {/if}
+                            {#if json_data["data-is-premium"] === true}
+                                <div class="_1HVtliqmrPb2bIG6xwIDiB _1_QI9r_6CW4Mf5GUcv8b-i brm-300gk_uJHcVn8DNeN">
+                                    <span class="_33zL0vXHSW8yWYWFJ-0umK">premium</span>
+                                </div>
+                            {/if}
+                            {#if json_data.hasOwnProperty("data-discount-percent")}
+                                <div class="_1HVtliqmrPb2bIG6xwIDiB _3gKF8JbPdGWYvoO_otXiIk brm-300gk_uJHcVn8DNeN">
+                                    <span class="_33zL0vXHSW8yWYWFJ-0umK">-{json_data["data-discount-percent"]}%</span>
+                                </div>
+                            {/if}
+                        </div>
+                    </div>
+                {/if}
             </span>
         </div>
         <span class="price">
