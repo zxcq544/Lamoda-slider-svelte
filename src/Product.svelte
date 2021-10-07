@@ -48,38 +48,21 @@
 
 <div
     class="products-list-item"
-    data-type="category"
-    data-rollover="./img236x341/M/P/MP002XM1RK04_15191679_2_v1_2x.jpg"
     on:mouseenter={set_list_item__extra_visible_on_MouseEnter}
     on:mouseleave={set_list_item__extra_invisible_on_MouseOut}
 >
-    <a href={json_data["data-href"]} data-position="2" class="products-list-item__link link">
+    <a href={json_data["data-href"]} class="products-list-item__link link">
         <div class="product-list-item__gallery">
             {#each image_urls as val, i}
                 <div class="product-list-item__gallery-page" data-id={i} on:mouseenter={change_image_src} />
             {/each}
         </div>
-        <div
-            class="to-favorites js-to-favorites                      to-favorites_wish-groups"
-            data-sku="MP002XM1RK04"
-            data-image="./img236x341/M/P/MP002XM1RK04_15191678_1_v1_2x.jpg"
-            data-price-origin={json_data["data-price-origin"]}
-            data-gender="men"
-            data-name="Пуловер"
-            data-color-family="коричневый"
-            data-brand="Zolla"
-            data-is-sport="false"
-            data-is-premium="false"
-            data-season="5592:мульти"
-            data-is-new="false"
-            data-category="Джемперы, свитеры и кардиганы"
-        />
+        <div class="to-favorites js-to-favorites                      to-favorites_wish-groups" />
         <div class="products-list-item_labels">
             <div class="products-list-item_placeholder" />
             <div
                 class="js-wish-arrow-open arrow-svg-bottom arrow-svg-bottom_grey
                 wish-groups__arrow wish-groups__arrow_closed"
-                data-sku="MP002XM1RK04"
             />
 
             <img
@@ -132,16 +115,7 @@
                         {/each}
                     </div>
                 {/if}
-                <div
-                    class="zoomin products-list-item__qv"
-                    data-sku="MP002XM1RK04"
-                    data-position="2"
-                    data-quick="MP002XM1RK04"
-                    data-quick-type="category"
-                    data-quick-promotion-provider-id=""
-                >
-                    Подробнее
-                </div>
+                <div class="zoomin products-list-item__qv">Подробнее</div>
             </div>
         </div>
     {/if}
